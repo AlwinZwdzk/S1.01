@@ -11,10 +11,11 @@ class test {
     String[][] style = new String[nbLigne][nbColonne];
     String[] alphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
     
-    void inittab(){
+    void init_tab_style(){
         for(int i = 0; i < nbLigne; i++){
             for(int j = 0; j < nbColonne; j++){
                 tableur[i][j]= "";
+                style[i][j]= "";
             }
         }
         for(int i = 0; i < nbLigne; i++){
@@ -32,11 +33,10 @@ class test {
     }
 
     void run() {
-        inittab();
+        init_tab_style();
         while(true){
             nav.allowDownload("style.css");
             nav.beginPage();
-            
             nav.println("""
             <html>
                 <head>
@@ -49,7 +49,7 @@ class test {
                                 <legend>Formulaire</legend>
                         
                                 <label for="colonne">Case :</label> 
-                                <input type="text" name="cellule">   
+                                <input placeholder="Exemple : B 5" type="text" name="cellule">   
                                 <label for="contenu">Contenu :</label> 
                                 <input type="text" name="contenu">
                         
@@ -81,16 +81,34 @@ class test {
                                 </fieldset>
 
                                 <fieldset>
-                                    <legend>Couleur du texte</legend>
+                                    <legend>Couleur du Texte</legend>
                                         <div>
-                                            <input type="color" name="color" value="#e66465" />
+                                            <select name="color">
+                                                <option value="black">Noir ⚫</option>
+                                                <option value="white">Blanc ⚪</option>
+                                                <option value="red">Rouge 🔴</option>
+                                                <option value="brown">Marron 🟤</option>
+                                                <option value="green">Vert 🟢</option>
+                                                <option value="yellow">Jaune 🟡</option>
+                                                <option value="blue">Bleu 🔵 </option>
+                                                <option value="purple">Violet 🟣 </option>
+                                            </select>
                                         </div>
                                 </fieldset>
-                
+
                                 <fieldset>
-                                    <legend>Couleur d'arrière plan</legend>
+                                    <legend>Couleur de Fond</legend>
                                         <div>
-                                            <input type="color" name="background" value="#e66465" />
+                                            <select name="background-color">
+                                                <option value="bgwhite">Blanc ⚪</option>
+                                                <option value="bgblack">Noir ⚫</option>
+                                                <option value="bgred">Rouge 🔴</option>
+                                                <option value="bgbrown">Marron 🟤</option>
+                                                <option value="bgreen">Vert 🟢</option>
+                                                <option value="bgyellow">Jaune 🟡</option>
+                                                <option value="bgblue">Bleu 🔵 </option>
+                                                <option value="bgpurple">Violet 🟣 </option>
+                                            </select>
                                         </div>
                                 </fieldset>
                 
@@ -102,29 +120,7 @@ class test {
                         <table>
                             <tbody>""");
             
-            int ligne = 0;
-            int colonne = 0;
-            if(nav.containsKey("cellule")){
-
-                String cellule = nav.get("cellule");
-                String[] mots = cellule.split(" ");
-                
-                String colonnestr = mots[0];
-                String lignestr = mots[1];
-                ligne = Integer.parseInt(lignestr);
-                for(int i=0;i<nbColonne;i++){
-                    if(tableur[0][i].equals(colonnestr)){
-                        colonne=i;
-                        }
-                    }
-            }
-
-            if(nav.containsKey("contenu")){
-                String contenu = nav.get("contenu");
-                tableur[ligne][colonne] = contenu;
-                
-            }
-
+            modif_cellule();
             affiche_tab();
 
             nav.println("""
@@ -143,10 +139,20 @@ class test {
 
     void affiche_tab(){
 
+        // for(int i = 0; i < nbLigne; i++){
+        //     nav.print("\t\t</tr>");
+        //     for(int j = 0; j < nbColonne; j++){
+        //         nav.print("\t\t<td>");
+        //         String cellule = tableur[i][j];
+        //         nav.print(cellule);
+        //         nav.print("</td>");
+        //     }
+        //     nav.println("\t\t</tr>");
+        // }
         for(int i = 0; i < nbLigne; i++){
             nav.print("\t\t</tr>");
             for(int j = 0; j < nbColonne; j++){
-                nav.print("\t\t<td>");
+                nav.print("\t\t<td class=\""+style[i][j]+"\">");
                 String cellule = tableur[i][j];
                 nav.print(cellule);
                 nav.print("</td>");
@@ -156,21 +162,56 @@ class test {
 
     }
 
+    void modif_cellule(){
+            int ligne = 0;
+            int colonne = 0;
+            if(nav.containsKey("cellule") && nav.containsKey("contenu")){
+
+                String cellule = nav.get("cellule");
+                String[] mots = cellule.split(" ");
+                
+                String colonnestr = mots[0];
+                String lignestr = mots[1];
+                ligne = Integer.parseInt(lignestr);
+                for(int i=0;i<nbColonne;i++){
+                    if(tableur[0][i].equals(colonnestr)){
+                        colonne=i;
+                    }
+                }
+                String contenu = nav.get("contenu");
+                tableur[ligne][colonne] = contenu;
+
+                String style_ajout = "";
+                if(nav.containsKey("gras")){
+                    String gras = nav.get("gras");
+                    if(gras.equals("true")){
+                        style_ajout = style_ajout + "gras ";
+                    }
+                }
+                if(nav.containsKey("italique")){
+                    String italique = nav.get("italique");
+                    if(italique.equals("true")){
+                        style_ajout = style_ajout + "italique ";
+                    }
+                }
+
+                if(nav.containsKey("color")){
+                    String color = nav.get("color");
+                    style_ajout = style_ajout + color + " ";
+                }
+
+                if(nav.containsKey("background-color")){
+                    String background = nav.get("background-color");
+                    style_ajout = style_ajout + background + " ";
+                }
+
+                style[ligne][colonne] = style_ajout;
+                System.out.println(style_ajout);
+            }
+    }
+
     public static void main(String[] args) {
         new test().run();
     }
 }
 
-// <td class="" style="color:;">
-// variable = "italique gras"
-
-// for(int i = 0; i < nbLigne; i++){
-//     nav.print("\t\t</tr>");
-//     for(int j = 0; j < nbColonne; j++){
-//         nav.print("\t\t<td class=\""+style[i][j]+"\">");
-//         String cellule = tableur[i][j];
-//         nav.print(cellule);
-//         nav.print("</td>");
-//     }
-//     nav.println("\t\t</tr>");
-// }
