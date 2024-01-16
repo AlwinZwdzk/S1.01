@@ -168,19 +168,10 @@ class test {
             if(nav.containsKey("cellule") && nav.containsKey("contenu")){
 
                 String cellule = nav.get("cellule");
-                int i=0;
-                String colonnestr = "";
-                String lignestr = "";
-                while(i<cellule.length() && inAlphabet(cellule.charAt(i))){
-                    colonnestr+=cellule.charAt(i);
-                    i++;
-                }
-                while(i<cellule.length()){
-                    lignestr+=cellule.charAt(i);
-                    i++;
-                }
+                String[] mots = cellule.split(" ");
                 
-                
+                String colonnestr = mots[0];
+                String lignestr = mots[1];
                 ligne = Integer.parseInt(lignestr);
                 for(int i=0;i<nbColonne;i++){
                     if(tableur[0][i].equals(colonnestr)){
@@ -217,15 +208,6 @@ class test {
                 style[ligne][colonne] = style_ajout;
                 System.out.println(style_ajout);
             }
-    }
-
-    boolean inAlphabet(char caractere){
-        for(int i=0;i<alphabet.length;i++){
-            if(caractere==alphabet[i].charAt(0)){
-                return true;
-            }
-        }
-        return false;
     }
 
     public static void main(String[] args) {
