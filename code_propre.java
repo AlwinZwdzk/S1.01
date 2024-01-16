@@ -15,6 +15,7 @@ class test {
     void run() {
         init_tab_style();
         while(true){
+            
             nav.allowDownload("style.css");
             nav.beginPage();
             nav.println("""
@@ -91,6 +92,26 @@ class test {
                                             </select>
                                         </div>
                                 </fieldset>
+
+                                <fieldset>
+                                    <legend>Encadrement de la cellule</legend>
+                                        <div>
+                                            <select name="encadrement">
+                                                <option value="encadrement1">1px</option>
+                                                <option value="encadrement2">2px</option>
+                                                <option value="encadrement3">3px</option>
+                                                <option value="encadrement5">5px</option>
+                                                <option value="encadrement7">7px</option>
+                                                <option value="encadrement9">9px</option>
+                                            </select>
+
+                                            <select name="encadrement_type">
+                                                <option value="plein">Plein</option>
+                                                <option value="pointilles">Pointillés</option>
+                                                <option value="tirets">Tirets</option>
+                                            </select>
+                                        </div>
+                                </fieldset>
                 
                                 <input type="submit" name="valider" value="Valider">
                             </fieldset>
@@ -116,10 +137,14 @@ class test {
                         <table>
             """);
             
+            style_ajout = "";
             gras();
             italique();
             color();
             background();
+            encadrement();
+            encadrement_type();
+
             if (nav.containsKey("rechercherRemplacer") && nav.containsKey("recherche") && nav.containsKey("remplacement")) {
                 String recherche = nav.get("recherche");
                 String remplacement = nav.get("remplacement");
@@ -237,6 +262,20 @@ class test {
         if(nav.containsKey("background-color")){
             String background = nav.get("background-color");
             style_ajout = style_ajout + background + " ";
+        }
+    }
+
+    void encadrement(){
+        if(nav.containsKey("encadrement")){
+            String encadrement = nav.get("encadrement");
+            style_ajout = style_ajout + encadrement + " ";
+        }
+    }
+
+    void encadrement_type(){
+        if(nav.containsKey("encadrement_type")){
+            String encadrement_type = nav.get("encadrement_type");
+            style_ajout = style_ajout + encadrement_type + " ";
         }
     }
 
