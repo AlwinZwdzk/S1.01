@@ -166,21 +166,40 @@ class test {
             int ligne = 0;
             int colonne = 0;
             if(nav.containsKey("cellule") && nav.containsKey("contenu")){
-
                 String cellule = nav.get("cellule");
-                String[] mots = cellule.split(" ");
-                
-                String colonnestr = mots[0];
-                String lignestr = mots[1];
+                String contenu = nav.get("contenu");
+                int i=0;
+                String colonnestr = "";
+                String lignestr= "";
+                if(contenu.charAt(0)=='='){
+                    String[] op = contenu.split(" ");
+                    double res = calcul(Double.parseDouble(op[1]),Double.parseDouble(op[2]),op[3].charAt(0));
+                    int len_op = op.length;
+                    int j=5;
+                    while(j<=len_op){
+                        res = calcul(res,Double.parseDouble(op[j-1]),op[j].charAt(0));
+                        j+=2;
+                    }
+                    contenu = Double.toString(res);
+                }
+                while(i<cellule.length() && inAlphabet(cellule.charAt(i))){
+                    colonnestr+=cellule.charAt(i);
+                    i++;
+                }
+                while(i<cellule.length()){
+                    lignestr+=cellule.charAt(i);
+                    i++;
+                }
+
                 ligne = Integer.parseInt(lignestr);
-                for(int i=0;i<nbColonne;i++){
-                    if(tableur[0][i].equals(colonnestr)){
-                        colonne=i;
+                for(int j=0;j<nbColonne;j++){
+                    if(tableur[0][j].equals(colonnestr)){
+                        colonne=j;
                     }
                 }
-                String contenu = nav.get("contenu");
-                tableur[ligne][colonne] = contenu;
 
+                tableur[ligne][colonne] = contenu; 
+                
                 String style_ajout = "";
                 if(nav.containsKey("gras")){
                     String gras = nav.get("gras");
@@ -210,8 +229,31 @@ class test {
             }
     }
 
+    boolean inAlphabet(char caractere){
+        for(int i=0;i<alphabet.length;i++){
+            if(caractere==alphabet[i].charAt(0)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    double calcul(double x1,double x2, char op){
+        switch(op){
+            case '+':
+                return x1+x2;
+            case '-':
+                return x1-x2;
+            case '*':   
+                return x1*x2;
+            case '/':
+                if(x2!=0) return x1/x2;
+                return -1;
+        } 
+        return -1;
+    }
+
     public static void main(String[] args) {
         new test().run();
     }
 }
-
