@@ -219,6 +219,15 @@ class test {
             }
     }
 
+    boolean inAlphabet(char caractere){
+        for(int i=0;i<alphabet.length;i++){
+            if(caractere==alphabet[i].charAt(0)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         new test().run();
     }
