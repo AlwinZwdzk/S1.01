@@ -1,0 +1,36 @@
+<fieldset>
+                                <legend>Couleur du Texte</legend>
+                                    <div>
+                                        <label for="color">Choisir une couleur :</label>
+
+                                            <select name="color" id="color">
+                                           
+                                            <option value="#000000">Noir ⚫</option>
+                                            <option value="#FFFFFF">Blanc ⚪</option>
+                                            <option value="#FF0000">Rouge 🔴</option>
+                                            <option value="#A52A2A">Marron 🟤</option>
+                                            <option value="#00FF00">Vert 🟢</option>
+                                            <option value="#FFFF00">Jaune 🟡</option>
+                                            <option value="#0000FF">Bleu 🔵 </option>
+                                            <option value="#7f00ff">Violet 🟣 </option>
+                                            </select>
+                                    </div>
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>Couleur de Fond</legend>
+                                    <div>
+                                        <label for="color1">Choisir une couleur :</label>
+
+                                            <select name="color1" id="color1">
+                                            <option value="#FFFFFF">Blanc ⚪</option>
+                                            <option value="noir">Noir ⚫</option>
+                                            <option value="#FF0000">Rouge 🔴</option>
+                                            <option value="#A52A2A">Marron 🟤</option>
+                                            <option value="#00FF00">Vert 🟢</option>
+                                            <option value="#FFFF00">Jaune 🟡</option>
+                                            <option value="#0000FF">Bleu 🔵 </option>
+                                            <option value="#7f00ff">Violet 🟣 </option>
+                                            </select>
+                                    </div>
+                            </fieldset>
