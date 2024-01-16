@@ -138,10 +138,6 @@ class test {
                 String remplacement = nav.get("remplacement");
                 rechercherRemplacer(recherche,remplacement);
             }
-            if (nav.containsKey("rechercherSurligner") && nav.containsKey("surligner")){
-                String surligner = nav.get("surligner");
-                rechercherRemplacer(surligner);
-            }
             if(nav.containsKey("cellule") && nav.containsKey("contenu")){
                 String contenu = nav.get("contenu");
                 String cellule = nav.get("cellule");
@@ -318,18 +314,7 @@ class test {
             }
         }
     }
-
-    /*Alwin Zawadzki*/
-    void rechercherSurligner(String surligner){            
-        for (int i = 0; i < nbLigne; i++) {
-            for (int j = 0; j < nbColonne; j++) {
-                if (tableur[i][j].contains(surligner)) {
-                    
-                }
-            }
-        }
-    }
-
+    
     public static void main(String[] args) {
         new test().run();
     }
