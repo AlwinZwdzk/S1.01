@@ -1,0 +1,86 @@
+td,
+table {
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+td {
+  width: 60px;
+  height: 30px;
+}
+
+fieldset {
+  border-radius: 20px;
+}
+
+.italique {
+  font-style: italic;
+}
+
+.gras {
+  font-weight: bolder;
+}
+
+.black {
+  color: black;
+}
+
+.white {
+  color: white;
+}
+
+.red {
+  color: red;
+}
+
+.brown {
+  color: brown;
+}
+
+.green {
+  color: green;
+}
+
+.blue {
+  color: blue;
+}
+
+.yellow {
+  color: yellow;
+}
+
+.purple {
+  color: purple;
+}
+
+.black {
+  color: black;
+}
+
+.bgwhite {
+  background-color: white;
+}
+
+.bgred {
+  background-color: red;
+}
+
+.bgbrown {
+  background-color: brown;
+}
+
+.bggreen {
+  background-color: green;
+}
+
+.bgblue {
+  background-color: blue;
+}
+
+.bgyellow {
+  background-color: yellow;
+}
+
+.bgpurple {
+  background-color: purple;
+}
