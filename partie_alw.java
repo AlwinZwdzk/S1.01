@@ -8,11 +8,11 @@
                         <input type="submit" name="annuler" value="Annuler">
                     </div>
                     """);
-        */
+        *///Est en correspondance avec la procédure annuler
 DANS LE RUN 
 
                 // pile[i_pile][0] = tableur[ligne][colonne]; 
-                // pile[i_pile][1] = Integer.toString(ligne); propre à la procédure annuler
+                // pile[i_pile][1] = Integer.toString(ligne); //propre à la procédure annuler
                 // pile[i_pile][2] = Integer.toString(colonne); 
                 // i_pile++;
                 // FIN FONCTION MODIF
