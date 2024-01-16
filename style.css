@@ -84,3 +84,39 @@ fieldset {
 .bgpurple {
   background-color: purple;
 }
+
+.encadrement1 {
+  border: 1px solid black;
+}
+
+.encadrement2 {
+  border: 2px solid black;
+}
+
+.encadrement3 {
+  border: 3px solid black;
+}
+
+.encadrement5 {
+  border: 5px solid black;
+}
+
+.encadrement7 {
+  border: 7px solid black;
+}
+
+.encadrement9 {
+  border: 9px solid black;
+}
+
+.plein {
+  border-style: solid;
+}
+
+.pointilles {
+  border-style: dotted;
+}
+
+.tirets {
+  border-style: dashed;
+}
