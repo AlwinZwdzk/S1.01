@@ -168,10 +168,19 @@ class test {
             if(nav.containsKey("cellule") && nav.containsKey("contenu")){
 
                 String cellule = nav.get("cellule");
-                String[] mots = cellule.split(" ");
+                int i=0;
+                String colonnestr = "";
+                String lignestr = "";
+                while(i<cellule.length() && inAlphabet(cellule.charAt(i))){
+                    colonnestr+=cellule.charAt(i);
+                    i++;
+                }
+                while(i<cellule.length()){
+                    lignestr+=cellule.charAt(i);
+                    i++;
+                }
                 
-                String colonnestr = mots[0];
-                String lignestr = mots[1];
+                
                 ligne = Integer.parseInt(lignestr);
                 for(int i=0;i<nbColonne;i++){
                     if(tableur[0][i].equals(colonnestr)){
