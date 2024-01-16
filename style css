@@ -1,0 +1,15 @@
+class test {
+    // la variable nav représente le dialogue avec le navigateur
+    Navigator nav = new Navigator();
+
+    void run() {
+        while (true) {
+            nav.allowDownload("style.css");
+            nav.beginPage();
+
+            nav.println("""
+                <html>
+                    <header>
+                        <link href="style.css" rel="stylesheet" />
+                    </header>
+                    <body>
