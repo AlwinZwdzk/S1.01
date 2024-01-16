@@ -1,15 +1,14 @@
-class test {
-    // la variable nav représente le dialogue avec le navigateur
-    Navigator nav = new Navigator();
+td,
+table {
+  border-collapse: collapse;
+  border: 1px solid black;
+}
 
-    void run() {
-        while (true) {
-            nav.allowDownload("style.css");
-            nav.beginPage();
+td {
+  width: 60px;
+  height: 30px;
+}
 
-            nav.println("""
-                <html>
-                    <header>
-                        <link href="style.css" rel="stylesheet" />
-                    </header>
-                    <body>
+fieldset {
+  border-radius: 20px;
+}
