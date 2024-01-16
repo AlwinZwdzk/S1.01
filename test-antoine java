@@ -1,0 +1,87 @@
+import java.io.*;
+import java.util.*;
+import navigator.*;
+class test {
+    // la variable nav représente le dialogue avec le navigateur
+    Navigator nav = new Navigator();
+
+    void run() {
+        while (true) {
+            nav.allowDownload("style.css");
+            nav.beginPage();
+
+            nav.println("""
+                <html>
+                    <header>
+                        <link href="style.css" rel="stylesheet" />
+                    </header>
+                    <body>
+                        <fieldset>
+                        <legend> Formulaire </legend>
+                        <form method="POST">
+                            Colonne: <input type="text" name="colonne">   
+                            <br> <br>
+                            Contenu : <input type="text" name="contenu">
+                            
+                            <br><br>
+                            <fieldset>
+                                <legend>Contenu en Gras </legend>
+
+                                <div>
+                                    <input type="radio" id="ONg" name="gras" value="ONg" />
+                                    <label for="ONg">ON ✅</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" id="OFFg" name="gras" value="OFFg" checked/>
+                                    <label for="OFFg">OFF ❌</label>
+                                </div>
+                            </fieldset>
+                            <br><br>    
+                            <fieldset>
+                                <legend>Contenu en Italique </legend>
+                                <div>
+                                    <input type="radio" id="ONi" name="italique" value="ONi" />
+                                    <label for="ONi">ON ✅</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" id="OFFi" name="italique" value="OFFi" checked/>
+                                    <label for="OFFi">OFF ❌</label>
+                                </div>
+                            </fieldset>
+                            <br>
+                            <fieldset>
+                                <p>Couleur du Texte</p>
+                                    <div>
+                                        <input type="color" id="text" name="texte" value="#e66465" />
+                                        <label for="texte">Texte</label>
+                                    </div>
+                            </fieldset>
+
+                            <br>
+                            <input type="submit" name="Valider">
+                        </form>
+                        </fieldset>
+                    </body>
+                </html>
+                """);
+
+            if (nav.containsKey("colonne")) {
+                nav.print("""
+                <html>
+                    <body>
+                        <p>
+                        Colonne plein
+                    """);
+                }
+            nav.print(nav.get("texte"));
+            // fin de la page web
+            nav.endPage();
+        }
+    }
+
+    public static void main(String[] args) {
+        new test().run();
+    }
+}
