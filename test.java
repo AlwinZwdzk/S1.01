@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 import navigator.*;
 
-class test {
+class tableur {
     Navigator nav = new Navigator();
     int nbLigne = 10;
     int nbColonne = 10;
@@ -255,6 +255,6 @@ class test {
     }
 
     public static void main(String[] args) {
-        new test().run();
+        new tableur().run();
     }
 }
