@@ -1,9 +1,10 @@
+/*Alwin Zawadzki - Nicolas Delhaye - Antoine Hugot*/
+
 import java.io.*;
 import java.util.*;
 import navigator.*;
 
-class test {
-    // la variable nav représente le dialogue avec le navigateur
+class tableur {
     Navigator nav = new Navigator();
     int nbLigne = 10;
     int nbColonne = 10;
@@ -265,21 +266,6 @@ class test {
         }
     }
 
-    void encadrement(){
-        if(nav.containsKey("encadrement")){
-            String encadrement = nav.get("encadrement");
-            style_ajout = style_ajout + encadrement + " ";
-        }
-    }
-
-    void encadrement_type(){
-        if(nav.containsKey("encadrement_type")){
-            String encadrement_type = nav.get("encadrement_type");
-            style_ajout = style_ajout + encadrement_type + " ";
-        }
-    }
-
-
     //Sépare les coordonnées de la ligne et la colone
     //Par exemple, coord("BA123") renvoie coord = {"BA","123"}
     String[] coordonnees(String cellule){
@@ -330,7 +316,22 @@ class test {
         return -1;
     }
 
-    /*Antoine Hugot*/
+    /*Nicolas Delhaye - Fonctionnalité additionnelle n°8 : encadrement des cellules*/
+    void encadrement(){
+        if(nav.containsKey("encadrement")){
+            String encadrement = nav.get("encadrement");
+            style_ajout = style_ajout + encadrement + " ";
+        }
+    }
+
+    void encadrement_type(){
+        if(nav.containsKey("encadrement_type")){
+            String encadrement_type = nav.get("encadrement_type");
+            style_ajout = style_ajout + encadrement_type + " ";
+        }
+    }
+
+    /*Antoine Hugot -  - Fonctionnalité additionnelle n°14 : rechercher et remplacer un mot*/
     void rechercherRemplacer(String recherche,String remplacement){            
         for (int i = 0; i < nbLigne; i++) {
             for (int j = 0; j < nbColonne; j++) {
@@ -342,6 +343,6 @@ class test {
     }
     
     public static void main(String[] args) {
-        new test().run();
+        new tableur().run();
     }
 }
