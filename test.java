@@ -8,6 +8,7 @@ class test {
     //nav.allowDownload("style.css");
     int nbLigne = 9;
     int nbColonne = 9;
+    String[] alphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
     
     void run() {
         nav.beginPage();
