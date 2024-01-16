@@ -53,8 +53,8 @@ fieldset {
   color: purple;
 }
 
-.black {
-  color: black;
+.bgblack {
+  background-color: black;
 }
 
 .bgwhite {
