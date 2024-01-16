@@ -29,7 +29,7 @@ class test {
                                 <legend>Formulaire</legend>
                         
                                 <label for="colonne">Case :</label> 
-                                <input placeholder="Exemple : B 5" type="text" name="cellule">   
+                                <input placeholder="Exemple : B5" type="text" name="cellule">   
                                 <label for="contenu">Contenu :</label> 
                                 <input type="text" name="contenu">
                         
@@ -109,19 +109,6 @@ class test {
                                         <input type="text" name="remplacement">
 
                                         <input type="submit" name="rechercherRemplacer" value="Rechercher et Remplacer">
-                                </fieldset>
-                            </form>
-                    </div>
-                    <div>
-                        <!-- Formulaire de recherche un mot et le surligner -->
-                            <form method="POST">
-                                <fieldset>
-                                        <legend>Rechercher un mot et le surligner</legend>
-
-                                        <label for="surligner">Mot à surligner :</label>
-                                        <input type="text" name="surligner">
-
-                                        <input type="submit" name="rechercherSurligner" value="Rechercher et surligner">
                                 </fieldset>
                             </form>
                     </div>
