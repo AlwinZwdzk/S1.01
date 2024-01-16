@@ -1,9 +1,10 @@
+// Alwin Zawadzki - Nicolas Delhaye - Antoine Hugot
+
 import java.io.*;
 import java.util.*;
 import navigator.*;
 
 class test {
-    // la variable nav représente le dialogue avec le navigateur
     Navigator nav = new Navigator();
     int nbLigne = 10;
     int nbColonne = 10;
@@ -49,7 +50,7 @@ class test {
                                 <legend>Formulaire</legend>
                         
                                 <label for="colonne">Case :</label> 
-                                <input placeholder="Exemple : B 5" type="text" name="cellule">   
+                                <input placeholder="Exemple : B5" type="text" name="cellule">   
                                 <label for="contenu">Contenu :</label> 
                                 <input type="text" name="contenu">
                         
